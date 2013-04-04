@@ -6,5 +6,6 @@ Interviewer::Application.routes.draw do
   delete '/login' => 'session#destroy'
 
   resources :users
+  resources :interviews
 
 end

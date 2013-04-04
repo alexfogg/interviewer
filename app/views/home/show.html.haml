@@ -1,40 +1,32 @@
 .row
-  .large-4.columns
-    - @users.each do |user|
-    %h4 User Image
-    = image_tag user.image
-    %h4 Map
-    #usermap
-    %h4 Add Interview
-    =link_to('Add Interview', '#', :remote => true, :class => 'button small radius info')
-    %br
+    .large-4.columns
+        - @users.each do |user|
+            %h4 User Image
+            =image_tag 'user.image'
+            %h4 Map
+            #map_canvas
+                %script
+                    display_map(40.7316, -73.9901, 13);
+            %h4 Add Interview
+            =link_to('Add Interview', '#', :remote => true, :class => 'button small radius info')
 
-  .large-8.columns
-    - @users.each do |user|
-    %br
-    %br
-    %br
-    %br
-    %h5 = user.name
-    %h5 = user.address
-    %h5 = user.email
-    %h5 = user.phone
-    %h5 = number_to_currency(user.balance)
-    %br
-    %br
+    .large-8.columns
+        - @users.each do |user|
+            %h5 = user.name
+            %h5 = user.address
+            %h5 = user.email
+            %h5 = user.phone
+            %h5 = number_to_currency(user.balance)
 
-  .large-12.columns
-    - @users.each do |user|
-    %br
-    %br
-    %br
-    %h4 My Interviews
-    = user.interviews
-    %table
-    / - each do ||
+.row
+    .large-12.columns
+        - @users.each do |user|
+            %h4 My Interviews
+            = user.interviews
+            %table
 
-    Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
-    %h4 Interviews Taken
-    Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
-    %h4 Graph
-    Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
+            Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
+            %h4 Interviews Taken
+            Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
+            %h4 Graph
+            Pariatur cliche tumblr twee helvetica, banksy williamsburg. Dreamcatcher twee nulla ethical, bicycle rights kale chips veniam sriracha aute direct trade keffiyeh culpa swag. Est locavore chillwave kale chips. Intelligentsia aesthetic eiusmod street art fixie. Marfa pinterest cupidatat cliche squid. Odio pork belly before they sold out ugh. Street art keffiyeh carles, ea irony chambray selfies et Austin disrupt kale chips irure mixtape.
