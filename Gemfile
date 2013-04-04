@@ -1,14 +1,17 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails'
 gem 'pg'
 gem 'jquery-rails'
-gem 'twilio-ruby'
-gem 'json'
-gem 'bcrypt-ruby'
 gem 'haml'
-gem 'json'
+gem 'bcrypt-ruby'
+gem 'carrierwave'
+gem 'fog'
+gem 'rmagick'
+gem 'remotipart'
 gem 'geocoder'
+gem 'aws-ses'
+gem 'stripe'
 
 group :assets do
   gem 'sass-rails'
@@ -19,6 +22,7 @@ end
 group :development, :test do
   gem 'coffee-rails-source-maps'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'rspec-rails'
   gem 'capybara'
