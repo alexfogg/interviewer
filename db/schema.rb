@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20130404173601) do
     t.text     "image"
     t.text     "address"
     t.string   "phone"
+    t.float    "lat"
+    t.float    "lng"
     t.decimal  "balance",         :default => 0.0
     t.boolean  "is_house",        :default => false
     t.datetime "created_at",                         :null => false

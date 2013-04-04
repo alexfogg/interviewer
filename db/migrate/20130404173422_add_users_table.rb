@@ -7,6 +7,8 @@ class AddUsersTable < ActiveRecord::Migration
       t.text :image
       t.text :address
       t.string :phone
+      t.float :lat
+      t.float :lng
       t.decimal :balance, :default => 0
       t.boolean :is_house, :default => false
       t.timestamps
