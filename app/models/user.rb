@@ -18,7 +18,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :image, :remote_image_url, :balance, :address, :phone, :is_house
+  attr_accessible :email, :name, :password, :password_confirmation, :image, :balance, :address, :phone, :is_house
   mount_uploader :image, PicUploader
   has_secure_password
   has_many :interviews
