@@ -1,9 +1,9 @@
 var map;
 
-function display_map(lat, long, zoom)
+function display_map(lat, lng, zoom)
 {
   var mapOptions = {
-    center: new google.maps.LatLng(lat, long),
+    center: new google.maps.LatLng(lat, lng),
     zoom: zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };

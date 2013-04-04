@@ -9,6 +9,8 @@
 #  image           :text
 #  address         :text
 #  phone           :string(255)
+#  lat             :float
+#  lng             :float
 #  balance         :decimal(, )      default(0.0)
 #  is_house        :boolean          default(FALSE)
 #  created_at      :datetime         not null
@@ -21,4 +23,15 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :interviews
   has_many :progresses
+  geocoded_by :address
+
+  before_save:geocode
+  def geocode
+    result = Geocoder.search(self.address).first
+
+    if result.present?
+      self.lat = result.latitude
+      self.lng = result.longitude
+    end
+  end
 end
