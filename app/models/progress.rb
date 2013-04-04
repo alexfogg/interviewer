@@ -15,4 +15,5 @@
 class Progress < ActiveRecord::Base
   attr_accessible :num_right, :num_wrong, :interview_id, :percentage, :user_id
   belongs_to :interview
+  belongs_to :user
 end

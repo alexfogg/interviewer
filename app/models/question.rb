@@ -13,5 +13,6 @@
 class Question < ActiveRecord::Base
   attr_accessible :question, :category, :interview_id
   has_many :answers
+  belongs_to :interview
 end
 
