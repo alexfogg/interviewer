@@ -28,6 +28,19 @@ class InterviewsController < ApplicationController
     render :filter
   end
 
+  def interviewchart
+    i = @auth.progresses.map do |progress|
+      {'num_right' => progress.num_right, 'date' => progress.created_at}
+    end
+    render :json => i
+  end
+
+  def analytics
+    @users = User.all
+    @progresses = Progress.all
+    @interview = Interview.find(params[:id])
+  end
+
 
   def create
     @interview = Interview.create(params[:interview])
