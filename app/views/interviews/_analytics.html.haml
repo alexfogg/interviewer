@@ -1,0 +1,17 @@
+%h2 Analytics
+
+- if @auth.present?
+  %table
+    %tr
+      %th Username
+      %th Last Date
+      %th Last Score
+      %th Avg Score
+      %th Number of Attempts
+      %tr
+        - @interview.progresses.each do |progress|
+          %td= progress.user.name
+          %td last date
+          %td last score
+          %td avg score
+          %td number of attempts
