@@ -1,11 +1,11 @@
-= form_for @user, :remote => true do
-  = text_field_tag :name, nil, :placeholder => 'name'
-  = password_field_tag :password, nil, :placeholder => 'password'
-  = text_field_tag :cost, nil, :placeholder => 'cost'
-  = text_field_tag :tags, nil, :placeholder => 'tags'
-  = text_field_tag :pass, nil,  :placeholder => 'Score ?'
-  = link_to('Add Question', new_question_path, :remote => true)
-  = submit_tag 'Login', :class => 'button tiny radius success'
-
-#questions
+.row
+  .large-3.columns
+    #interviewform
+      = form_for @interview, :remote => true do |f|
+        = f.text_field :name, :placeholder => 'name'
+        = f.text_field :cost, :placeholder => 'cost'
+        = f.text_field :threshold, :placeholder => 'Score ?'
+        = text_field_tag :tags, nil, :placeholder => 'tags'
+        = f.submit 'Create Interview', :class => 'button tiny radius success'
+  .large-9.columns
 
