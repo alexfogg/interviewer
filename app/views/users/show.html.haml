@@ -1,3 +1,6 @@
+%script
+  $(document).ready(show_chart);
+  
 .row
   .large-4.columns
     %h4 User Image
@@ -7,7 +10,7 @@
       %script
         display_map(40.7316, -73.9901, 13);
     %h4 Add Interview
-    =link_to('Add Interview', new_interview_path, :remote => true, :class => 'button small radius info')
+    =link_to('Add Interview', new_interview_path, :class => 'button small radius info')
 
   .large-8.columns
     %h5= @auth.name
@@ -50,3 +53,6 @@
             %td= progress.num_wrong
             %td= progress.interview.user.name
             %td= link_to('Retake', interview_path)
+
+  .large-12.columns
+    #chart

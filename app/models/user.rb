@@ -18,7 +18,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :image, :balance, :address, :phone, :is_house
+  attr_accessible :email, :name, :password, :password_confirmation, :image, :balance, :address, :phone, :is_house, :lat, :lng
   mount_uploader :image, PicUploader
   has_secure_password
   has_many :interviews
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   geocoded_by :address
 
   before_save:geocode
-  def geocode
+    def geocode
     result = Geocoder.search(self.address).first
 
     if result.present?
