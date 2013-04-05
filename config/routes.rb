@@ -6,7 +6,12 @@ Interviewer::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'userchart'
+    end
+  end
+
   resources :interviews
 
 end

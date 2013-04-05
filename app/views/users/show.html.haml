@@ -1,3 +1,6 @@
+%script
+  $(document).ready(show_chart);
+  
 .row
   .large-4.columns
     %h4 User Image
@@ -50,3 +53,6 @@
             %td= progress.num_wrong
             %td= progress.interview.user.name
             %td= link_to('Retake', interview_path)
+
+  .large-12.columns
+    #chart
