@@ -5,7 +5,6 @@
 
 function show_chart()
 {
-
   $.ajax({
       dataType: 'json',
       type: "get",
