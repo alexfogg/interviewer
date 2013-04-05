@@ -11,6 +11,8 @@ function show_chart()
       url: "/userchart/"
   }).done(process_activity);
 
+}
+
 function show_chart2()
 {
   $.ajax({
