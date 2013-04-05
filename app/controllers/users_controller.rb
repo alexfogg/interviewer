@@ -13,12 +13,10 @@ class UsersController < ApplicationController
   end
 
   def userchart
-    u = User.all 
-    binding.pry
-    respond_to do |format|
-      format.html
-      format.js {render :json => u}
-    end
+    u = @auth.progresses.map do |progress|
+      {'num_right' => progress.num_right, 'date' => progress.created_at}
+    end 
+    render :json => u
   end
   
 
