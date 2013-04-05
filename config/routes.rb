@@ -10,17 +10,16 @@ Interviewer::Application.routes.draw do
 
   get '/interviewchart' => 'interviews#interviewchart'
 
-
   resources :interviews do
     member do
       get 'analytics', :action => :analytics, :as => :analytics
     end
-
     collection do
+      get 'search'
       get 'filter/:user_id', :action => :filter, :as => :filter
       get 'cost/:cost', :action => :cost, :as => :cost
-      end
     end
+  end
 
   resources :questions, :only => [:index, :show] do
     collection do
