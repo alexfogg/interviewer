@@ -8,11 +8,14 @@ Interviewer::Application.routes.draw do
   delete '/login' => 'session#destroy'
   get '/userchart' => 'users#userchart'
 
+  get '/interviewchart' => 'interviews#interviewchart'
+
 
   resources :interviews do
     member do
       get 'analytics', :action => :analytics, :as => :analytics
     end
+
     collection do
       get 'filter/:user_id', :action => :filter, :as => :filter
       get 'cost/:cost', :action => :cost, :as => :cost
