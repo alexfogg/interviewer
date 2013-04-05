@@ -32,7 +32,7 @@ function process_activity(chartdata)
     data: chartdata,
     xkey: 'date',
     ykeys: ['num_right'],
-    labels: ['Scores'],
+    labels: ['Score'],
     ymin: 'auto',
     ymax: 'auto'
   });
@@ -43,11 +43,11 @@ function process_activity2(chartdata2)
   $('#interviewchart').empty();
 
   Morris.Line({
-    element: 'chart',
+    element: 'interviewchart',
     data: chartdata2,
     xkey: 'date',
-    ykeys: ['num_right'],
-    labels: ['Scores'],
+    ykeys: ['percentages'],
+    labels: ['Score'],
     ymin: 'auto',
     ymax: 'auto'
   });
