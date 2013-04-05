@@ -1,4 +1,2 @@
 $('#questions').append('<h3>Question: <%= @question.question %></h3>');
 $('#questions').append('<%=link_to('Answers', new_answers_path(@question), :remote => true, :class => 'button tiny') %>')
-
-

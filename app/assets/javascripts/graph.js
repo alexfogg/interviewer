@@ -5,14 +5,12 @@
 
 function show_chart()
 {
-
   $.ajax({
       dataType: 'json',
       type: "get",
-      url: "/users/userchart/"
+      url: "/userchart/"
   }).done(process_activity);
 
-  return false;
 }
 
 function process_activity(chartdata)
@@ -22,9 +20,9 @@ function process_activity(chartdata)
   Morris.Line({
     element: 'chart',
     data: chartdata,
-    xkey: 'email',
-    ykeys: ['name'],
-    labels: ['Actual Wait'],
+    xkey: 'date',
+    ykeys: ['num_right'],
+    labels: ['Scores'],
     ymin: 'auto',
     ymax: 'auto'
   });
