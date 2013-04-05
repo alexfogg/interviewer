@@ -1,6 +1,8 @@
 = link_to('New Interview', new_interview_path, :class => 'button tiny success') if @auth.present?
 = link_to('Show All', root_path, :class => 'button tiny succcess') if @auth.present?
+
 - if @auth.present?
+  %h2 Interviews
   #form
   %table
     %tr
@@ -10,19 +12,23 @@
       %th # Passing
       %th # Fails
       %th Owner
-      %th Tag
+      %th Analytics
+      %th Tags
     - @interviews.each do |interview|
       %tr
-        / %td=
         %td= interview.name
         %td= link_to(interview.cost, cost_interviews_path(interview.cost), :remote => true)
         %td= interview.threshold
-        %td 0
-        %td 0
+        %td Passing
+        %td Fails
         %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
-        - interview.tags.each do |tag|
-          %td=tag.name
-        / %td= interview.progress.num_right
+        %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert')
         %td
-          / - interview.tags.each do |tag|
-          /   = link_to("#{tag.name} - #{tag.interviews.count}", filter_interviews_path(tag.id), :remote => true, :class => 'button tiny radius secondary')
+          = interview.tags.map(&:name).join(', ')
+
+
+
+/ %td= interview.progress.num_right
+/ %td
+/ - interview.tags.each do |tag|
+/   = link_to("#{tag.name} - #{tag.interviews.count}", filter_interviews_path(tag.id), :remote => true, :class => 'button tiny radius secondary')

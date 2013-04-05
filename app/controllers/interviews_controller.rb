@@ -19,6 +19,12 @@ class InterviewsController < ApplicationController
 
   end
 
+  def analytics
+    @users = User.all
+    @progresses = Progress.all
+    @interview = Interview.find(params[:id])
+  end
+
 
 
   def create

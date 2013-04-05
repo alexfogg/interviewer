@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405005211) do
+ActiveRecord::Schema.define(:version => 20130405154020) do
 
   create_table "answers", :force => true do |t|
     t.text     "response"
@@ -24,10 +24,9 @@ ActiveRecord::Schema.define(:version => 20130405005211) do
   create_table "interviews", :force => true do |t|
     t.string   "name"
     t.decimal  "cost"
-    t.integer  "progress_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.decimal  "threshold"
   end
 
