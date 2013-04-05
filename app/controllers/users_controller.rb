@@ -1,23 +1,16 @@
 class UsersController < ApplicationController
 
+  def show
+    @auth
+  end
 
-def show
-end
+  def new
+    @user = User.new
+  end
 
-
-def new
-  @user = User.new
-end
-
-def create
-  @user = User.create(params[:user])
-end
-
-
-
-
-
-
+  def create
+    @user = User.create(params[:user])
+  end
 
 
 end
