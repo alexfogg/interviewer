@@ -1,0 +1,11 @@
+.row
+  .large-3.columns
+    #interviewform
+      = form_for @interview, :remote => true do |f|
+        = f.text_field :name, :placeholder => 'name'
+        = f.text_field :cost, :placeholder => 'cost'
+        = f.text_field :threshold, :placeholder => 'Score ?'
+        = text_field_tag :tags, nil, :placeholder => 'tags'
+        = f.submit 'Create Interview', :class => 'button tiny radius success'
+  .large-9.columns
+
