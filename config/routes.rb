@@ -19,6 +19,12 @@ Interviewer::Application.routes.draw do
     end
   end
 
-  resources :questions
+  resources :questions, :only => [:index, :show] do
+    collection do
+      get 'new/:interview_id', :action => :new, :as => :new
+      post '/:interview_id', :action => :create, :as => :create
+    end
+  end
+
 
 end

@@ -1,11 +1,10 @@
 .row
   .large-5.columns
     #questionsform
-      = form_for @question, :remote => true do |f|
-        = f.text_field :question, :placeholder => 'name'
-        = f.text_field :category, :placeholder => 'cost'
+      = form_for @question, :method => :post, :url => create_questions_path, :remote => true do |f|
+        = f.text_field :question, :placeholder => 'question'
+        = f.text_field :category, :placeholder => 'category'
         = f.submit 'Create Question', :class => 'button tiny radius success'
   .large-7.columns
     #answersform
-
 
