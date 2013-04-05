@@ -65,6 +65,7 @@ u1.progresses << p1 << p2
 u2.progresses << p3
 u3.progresses << p4
 
+
 i1.questions = [q1, q2]
 i2.questions = [q3, q4]
 i3.questions = [q5, q6]

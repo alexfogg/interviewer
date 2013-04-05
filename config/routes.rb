@@ -8,5 +8,6 @@ Interviewer::Application.routes.draw do
 
   resources :users
   resources :interviews
+  resources :questions
 
 end
