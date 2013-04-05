@@ -1,0 +1,27 @@
+= link_to('New Interview', new_interview_path, :remote => true, :class => 'button tiny success') if @auth.present?
+- if @auth.present?
+  #form
+  %table
+    %tr
+      %th Name
+      %th Cost
+      %th Threshold %
+      %th # Passing
+      %th # Fails
+      %th Owner
+      %th Tag
+    - @interviews.each do |interview|
+      %tr
+        / %td=
+        %td= interview.name
+        %td= interview.cost
+        %td= interview.threshold
+        %td 0
+        %td 0
+        %td= interview.user.name
+        - interview.tags.each do |tag|
+          %td=tag.name
+        / %td= interview.progress.num_right
+        %td
+          / - interview.tags.each do |tag|
+          /   = link_to("#{tag.name} - #{tag.interviews.count}", filter_interviews_path(tag.id), :remote => true, :class => 'button tiny radius secondary')

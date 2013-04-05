@@ -12,7 +12,7 @@
 #
 
 class Interview < ActiveRecord::Base
-  attr_accessible :name, :cost, :progress_id, :user_id
+  attr_accessible :name, :cost, :progress_id, :user_id, :threshold
   has_one :progress
   has_and_belongs_to_many :tags
   has_many :questions
