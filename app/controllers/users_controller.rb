@@ -18,6 +18,4 @@ class UsersController < ApplicationController
     end 
     render :json => u
   end
-  
-
 end
