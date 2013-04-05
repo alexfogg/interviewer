@@ -8,6 +8,7 @@ Interviewer::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   get '/userchart' => 'users#userchart'
+  get '/interviewchart' => 'interviews#interviewchart'
   
    resources :interviews do
     collection do

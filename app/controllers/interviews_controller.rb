@@ -15,10 +15,14 @@ class InterviewsController < ApplicationController
 
   def cost
     @interviews = Interview.where(:cost => params[:cost])
-
-
   end
 
+def interviewchart
+    i = @auth.progresses.map do |progress|
+      {'num_right' => progress.num_right, 'date' => progress.created_at}
+    end 
+    render :json => i
+  end
 
 
   def create
