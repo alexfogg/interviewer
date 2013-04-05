@@ -15,10 +15,18 @@ class InterviewsController < ApplicationController
 
   def cost
     @interviews = Interview.where(:cost => params[:cost])
-
-
   end
 
+  def search
+    query = params[:query]
+    @interviews = Interview.where("name @@ :q", :q => query)
+
+    tags = Tag.where("name @@ :q", :q => query)
+    @interviews += tags.map(&:interviews).flatten
+    @interviews.uniq!
+
+    render :filter
+  end
 
 
   def create
