@@ -17,12 +17,12 @@ class InterviewsController < ApplicationController
     @interviews = Interview.where(:cost => params[:cost])
   end
 
-<<<<<<< HEAD
-  def interviewchart
-    i = @progresses.map do |progress|
-      {'percentage' => progress.percentage, 'date' => progress.created_at}
-    end 
-=======
+
+  # def interviewchart
+  #   i = @progresses.map do |progress|
+  #     {'percentage' => progress.percentage, 'date' => progress.created_at}
+  #   end
+
   def search
     query = params[:query]
     @interviews = Interview.where("name @@ :q", :q => query)
@@ -38,7 +38,6 @@ class InterviewsController < ApplicationController
     i = @auth.progresses.map do |progress|
       {'num_right' => progress.num_right, 'date' => progress.created_at}
     end
->>>>>>> 9ba31a5f491efdf3fe4f88334dfd51d5c7d5af83
     render :json => i
   end
 
@@ -65,7 +64,8 @@ class InterviewsController < ApplicationController
 
   def show
     @interview = Interview.find(params[:id])
-
+    @answer = Answer.new
+    @progress = Progress.create
   end
 
 

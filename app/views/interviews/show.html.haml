@@ -1,9 +1,17 @@
 - @interview.name
+.progress.hide= @progress.id
 %br
 - @interview.questions.each do |question|
   %br
-  =question.question
-  %br
-  - question.answers.each do |answer|
+  .q
+    =question.question
     %br
-    =answer.response
+    - question.answers.each do |answer|
+      %br
+      %input{:name => "is_correct", :type => "checkbox", :class => 'check'}
+      = answer.response
+    %br
+    = link_to('Submit', create_progresses_path(@interview), :remote => true)
+
+
+
