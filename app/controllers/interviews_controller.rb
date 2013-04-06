@@ -40,7 +40,6 @@ class InterviewsController < ApplicationController
 
 
   def analytics
-    binding.pry
     @users = User.all
     @progresses = Progress.all
     @interview = Interview.find(params[:id])
