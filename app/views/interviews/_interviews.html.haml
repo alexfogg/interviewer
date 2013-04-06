@@ -22,7 +22,7 @@
         %td Passing
         %td Fails
         %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
-        %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert')
+        %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert analyticschart')
         %td
           = interview.tags.map(&:name).join(', ')
 

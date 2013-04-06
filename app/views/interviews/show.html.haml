@@ -3,12 +3,11 @@
 %br
 - @interview.questions.each do |question|
   %br
-  .q
+  .q{:'data-question-id' => question.id}
     =question.question
-    %br
     - question.answers.each do |answer|
       %br
-      %input{:name => "is_correct", :type => "checkbox", :class => 'check'}
+      %input{:name => "is_correct", :type => "checkbox", :class => 'check', :'data-answer-id' => answer.id }
       = answer.response
     %br
     = link_to('Submit', create_progresses_path(@interview), :remote => true)
