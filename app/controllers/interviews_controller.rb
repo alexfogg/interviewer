@@ -18,10 +18,6 @@ class InterviewsController < ApplicationController
   end
 
 
-  # def interviewchart
-  #   i = @progresses.map do |progress|
-  #     {'percentage' => progress.percentage, 'date' => progress.created_at}
-  #   end
 
   def search
     query = params[:query]
@@ -34,12 +30,7 @@ class InterviewsController < ApplicationController
     render :filter
   end
 
-  def interviewchart
-    i = @auth.progresses.map do |progress|
-      {'num_right' => progress.num_right, 'date' => progress.created_at}
-    end
-    render :json => i
-  end
+
 
   def analytics
     @users = User.all
