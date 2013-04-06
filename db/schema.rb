@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130405154020) do
   create_table "progresses", :force => true do |t|
     t.integer  "num_right"
     t.integer  "num_wrong"
-    t.float    "percentage"
+    t.decimal  "percentage"
     t.integer  "interview_id"
     t.integer  "user_id"
     t.datetime "created_at",   :null => false

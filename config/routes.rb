@@ -1,5 +1,5 @@
 Interviewer::Application.routes.draw do
-  root :to => 'interviews#index'
+  root :to => 'home#index'
   resources :users, :only => [:index, :new, :create, :show]
 
 
@@ -31,6 +31,7 @@ Interviewer::Application.routes.draw do
   resources :answers, :only => [:index] do
     collection do
       get 'new/:question_id', :action => :new, :as => :new
+      post '/:question_id', :action => :create, :as => :create
     end
   end
 
