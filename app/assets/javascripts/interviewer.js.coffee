@@ -37,5 +37,9 @@ window.app =
       url: "/interviews/search?query=#{query}"
     $.ajax(settings)
   submit: (e) ->
-    console.log($(this)
+    a = $(this).parent().children('input:checked')  #gets the array
+    console.log(a.first().attr('data-answer-id'))
+    b= _.pluck(a, attr('data-answer-id'));
+    console.log(b[0]) # i can't do ajax calls unless I get the array of ids.
+
 $(document).ready(app.document_ready)
