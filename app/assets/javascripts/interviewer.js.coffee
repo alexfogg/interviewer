@@ -22,6 +22,7 @@ window.app =
     $('#reg_form').on('click', 'a[data-clear-form]', app.clear_reg_form)
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('body').on('keyup', '#searchinterview', app.filter_interviews)
+    $('.submitAnswer').click(app.submit)
   clear_reg_form: (e) ->
     e.preventDefault()
     $("#reg_form").hide()
@@ -35,4 +36,6 @@ window.app =
       type: 'get'
       url: "/interviews/search?query=#{query}"
     $.ajax(settings)
+  submit: (e) ->
+    console.log($(this)
 $(document).ready(app.document_ready)

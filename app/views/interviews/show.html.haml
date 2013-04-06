@@ -10,7 +10,7 @@
       %input{:name => "is_correct", :type => "checkbox", :class => 'check', :'data-answer-id' => answer.id }
       = answer.response
     %br
-    = link_to('Submit', create_progresses_path(@interview), :remote => true)
+    = link_to('Submit', create_progresses_path(@interview), :remote => true, :class => 'submitAnswer')
 
 
 
