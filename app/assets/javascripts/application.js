@@ -3,6 +3,7 @@
 //= require jquery.remotipart
 //= require 'foundation/js/vendor/custom.modernizr.js'
 //= require 'foundation/js/foundation.min.js'
+//= require 'reveal/jquery.reveal.js'
 //= require 'map.js'
 //= require 'interviewer.js'
 //= require 'graph'

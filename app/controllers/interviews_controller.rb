@@ -18,6 +18,7 @@ class InterviewsController < ApplicationController
   end
 
   def interviewchart
+
     chartdata = []
     Interview.all.each do |interview|
       interview.progresses.each do |progress|
@@ -57,5 +58,9 @@ class InterviewsController < ApplicationController
     end
     @interviews = Interview.all
     end
+
+  def show
+    @interview = Interview.find(params[:id])
+  end
 end
 

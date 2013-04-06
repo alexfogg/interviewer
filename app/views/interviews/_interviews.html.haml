@@ -16,7 +16,7 @@
       %th Tags
     - @interviews.each do |interview|
       %tr
-        %td= interview.name
+        %td= link_to(interview.name, interview_path(interview))
         %td= link_to(interview.cost, cost_interviews_path(interview.cost), :remote => true)
         %td= interview.threshold
         %td Passing

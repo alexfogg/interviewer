@@ -1,0 +1,9 @@
+- @interview.name
+%br
+- @interview.questions.each do |question|
+  %br
+  =question.question
+  %br
+  - question.answers.each do |answer|
+    %br
+    =answer.response

@@ -1,0 +1,13 @@
+.row
+  .large-4.columns
+    = form_for @answer, :method => :post, :url => create_answers_path(@question), :remote => true do |f|
+      = f.text_field :response, :placeholder => 'response'
+      = f.check_box :is_correct
+      = f.submit 'Create Answer Choice', :class => 'button tiny radius success'
+  .large-8.columns
+
+
+
+
+
+

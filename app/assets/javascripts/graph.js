@@ -12,6 +12,8 @@ function show_chart()
   }).done(process_activity);
 }
 
+}
+
 function show_chart2()
 {
   $.ajax({
