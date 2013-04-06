@@ -1,5 +1,5 @@
 Interviewer::Application.routes.draw do
-  root :to => 'interviews#index'
+  root :to => 'home#index'
   resources :users, :only => [:index, :new, :create, :show]
 
 
