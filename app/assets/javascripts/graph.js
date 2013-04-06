@@ -1,6 +1,6 @@
  $(function(){
   show_chart();
-  show_chart2();
+  // $('.analyticschart').click(show_chart2);
 });
 
 function show_chart()
@@ -10,6 +10,7 @@ function show_chart()
       type: "get",
       url: "/userchart/"
   }).done(process_activity);
+}
 
 function show_chart2()
 {
@@ -44,7 +45,7 @@ function process_activity2(chartdata2)
     element: 'interviewchart',
     data: chartdata2,
     xkey: 'date',
-    ykeys: ['percentages'],
+    ykeys: ['percentage'],
     labels: ['Score'],
     ymin: 'auto',
     ymax: 'auto'
