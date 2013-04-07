@@ -36,5 +36,12 @@ Interviewer::Application.routes.draw do
     end
   end
 
+  resources :progresses, :only => [:index] do
+    collection do
+      get '/:interview_id',  :action => :create, :as => :create
+    end
+  end
+
+
 
 end

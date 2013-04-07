@@ -18,7 +18,6 @@ class InterviewsController < ApplicationController
   end
 
   def interviewchart
-
     chartdata = []
     Interview.all.each do |interview|
       interview.progresses.each do |progress|
@@ -28,10 +27,10 @@ class InterviewsController < ApplicationController
     render :json => chartdata
   end
 
+
   def search
     query = params[:query]
     @interviews = Interview.where("name @@ :q", :q => query)
-
     tags = Tag.where("name @@ :q", :q => query)
     @interviews += tags.map(&:interviews).flatten
     @interviews.uniq!
@@ -59,8 +58,11 @@ class InterviewsController < ApplicationController
     @interviews = Interview.all
     end
 
+
   def show
     @interview = Interview.find(params[:id])
+    @answer = Answer.new
+    @progress = Progress.create
   end
 
   def purchase
