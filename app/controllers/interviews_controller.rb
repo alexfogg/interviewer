@@ -81,7 +81,7 @@ class InterviewsController < ApplicationController
 
     if @error.nil?
       @auth.interviews << interview
-      # Notifications.purchased_interview(@auth, interview).deliver
+      Notifications.purchased_interview(@auth, interview).deliver
     end
 
     @interviews = Interview.filtered
