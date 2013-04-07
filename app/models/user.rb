@@ -15,6 +15,7 @@
 #  is_house        :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  customer_id     :string(255)
 #
 
 class User < ActiveRecord::Base

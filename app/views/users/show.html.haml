@@ -60,7 +60,7 @@
         - @auth.progresses.each do |progress|
           %tr
             %td= progress.interview.name
-            %td 4/20/1969
+            %td= progress.updated_at
             %td= progress.percentage
             %td= progress.num_right
             %td= progress.num_wrong
