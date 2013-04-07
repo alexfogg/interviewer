@@ -64,7 +64,12 @@
             %td= progress.num_right
             %td= progress.num_wrong
             %td= progress.interview.user.name
-            %td= link_to('Retake', interview_path)
+            %td= link_to('Retake', '#', "data-reveal-id" => 'stripe')
+
+#stripe.reveal-modal
+  / = render :partial => "frame"
+  Hello
+  %a.close-reveal-modal ×
 
   .large-12.columns
     #chart
