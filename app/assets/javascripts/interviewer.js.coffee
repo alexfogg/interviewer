@@ -23,6 +23,12 @@ window.app =
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('body').on('keyup', '#searchinterview', app.filter_interviews)
     $('.submitAnswer').click(app.submit)
+    # $('body').on('keyup', '#search', app.filter_interviews) ## add filter interviews
+    $('body').on('token', '.stripe-button', app.token_generated)
+  token_generated: (e, token) ->
+    e.preventDefault()
+    $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
+    console.log(token)
   clear_reg_form: (e) ->
     e.preventDefault()
     $("#reg_form").hide()

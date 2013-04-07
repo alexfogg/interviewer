@@ -13,6 +13,7 @@ Interviewer::Application.routes.draw do
   resources :interviews do
     member do
       get 'analytics', :action => :analytics, :as => :analytics
+      post 'purchase'
     end
     collection do
       get 'search'
