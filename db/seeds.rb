@@ -53,10 +53,13 @@ i2.tags << t1
 i3.tags << t2
 i4.tags << t2
 
-i1.progress = p1
-i2.progress = p2
-i3.progress = p3
-i4.progress = p4
+# t1.interviews << i1 << i2
+# t2.interviews << i3 << i4
+
+i1.progresses << p1
+i2.progresses << p2
+i3.progresses << p3
+i4.progresses << p4
 
 u1.progresses << p1 << p2
 u2.progresses << p3

@@ -1,5 +1,5 @@
 $('#interviewcreate').hide()
-$('#questions').append('<%=link_to('Add Question', new_question_path, :remote => true, :class => 'button tiny') %>')
+$('#questions').append('<%=link_to('Add Question', new_questions_path(@interview), :remote => true, :class => 'button tiny') %>')
 
 //<% @interview.id %>
 

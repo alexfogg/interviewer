@@ -3,7 +3,7 @@ class AddProgressTable < ActiveRecord::Migration
     create_table :progresses do |t|
       t.integer :num_right
       t.integer :num_wrong
-      t.decimal :percentage
+      t.float :percentage
       t.integer :interview_id
       t.integer :user_id
       t.timestamps

@@ -11,6 +11,7 @@
       %tr
         - @interview.progresses.each do |progress|
           %td= progress.user.name
+          %td= progress.updated_at
           %td last date
           %td last score
           %td avg score
