@@ -8,12 +8,12 @@
       %th Last Score
       %th Avg Score
       %th Number of Attempts
+    - @interview.progresses.each do |progress|
       %tr
-        - @interview.progresses.each do |progress|
-          %td= progress.user.name
-          %td last date
-          %td last score
-          %td avg score
-          %td number of attempts
+        %td= progress.user.name
+        %td= progress.created_at
+        %td= number_to_percentage(@interview.progresses.last.last_score)
+        %td= number_to_percentage(@interview.avg_score)
+        %td= @interview.progresses.count
 
 #interviewchart

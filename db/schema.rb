@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405154020) do
+ActiveRecord::Schema.define(:version => 20130406231937) do
 
   create_table "answers", :force => true do |t|
     t.text     "response"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130405154020) do
     t.boolean  "is_house",        :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "customer_id"
   end
 
 end

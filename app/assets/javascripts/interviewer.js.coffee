@@ -22,6 +22,13 @@ window.app =
     $('#reg_form').on('click', 'a[data-clear-form]', app.clear_reg_form)
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('body').on('keyup', '#searchinterview', app.filter_interviews)
+    $('.submitAnswer').click(app.submit)
+    # $('body').on('keyup', '#search', app.filter_interviews) ## add filter interviews
+    $('body').on('token', '.stripe-button', app.token_generated)
+  token_generated: (e, token) ->
+    e.preventDefault()
+    $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
+    console.log(token)
   clear_reg_form: (e) ->
     e.preventDefault()
     $("#reg_form").hide()
@@ -35,4 +42,10 @@ window.app =
       type: 'get'
       url: "/interviews/search?query=#{query}"
     $.ajax(settings)
+  submit: (e) ->
+    a = $(this).parent().children('input:checked')  #gets the array
+    console.log(a.first().attr('data-answer-id'))
+    b= _.pluck(a, attr('data-answer-id'));
+    console.log(b[0]) # i can't do ajax calls unless I get the array of ids.
+
 $(document).ready(app.document_ready)
