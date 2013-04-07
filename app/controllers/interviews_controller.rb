@@ -58,11 +58,11 @@ class InterviewsController < ApplicationController
     @interviews = Interview.all
     end
 
-
   def show
     @interview = Interview.find(params[:id])
     @answer = Answer.new
     @progress = Progress.create
+    @auth.interviews.where(:id => @interview.id).first.progresses << @progress
   end
 end
 

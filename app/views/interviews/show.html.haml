@@ -1,16 +1,17 @@
-- @interview.name
-.progress.hide= @progress.id
-%br
-- @interview.questions.each do |question|
+#show{:'data-auth-token' => form_authenticity_token}
+  - @interview.name
+  .progress.hide= @progress.id
   %br
-  .q{:'data-question-id' => question.id}
-    =question.question
-    - question.answers.each do |answer|
-      %br
-      %input{:name => "is_correct", :type => "checkbox", :class => 'check', :'data-answer-id' => answer.id }
-      = answer.response
+  - @interview.questions.each do |question|
     %br
-    = link_to('Submit', create_progresses_path(@interview), :remote => true, :class => 'submitAnswer')
+    .q{:'data-question-id' => question.id, :'data-interview-id' => @interview.id}
+      =question.question
+      - question.answers.each do |answer|
+        %br
+        %input{:name => "is_correct", :type => "checkbox", :class => 'check', :'data-answer-id' => answer.id }
+        = answer.response
+      %br
+      = link_to('Submit', create_progresses_path(@interview), :remote => true, :class => 'submitAnswer')
 
 
 
