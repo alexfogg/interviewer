@@ -17,22 +17,24 @@ class InterviewsController < ApplicationController
     @interviews = Interview.where(:cost => params[:cost])
   end
 
+  def interviewchart
+    chartdata = []
+    Interview.all.each do |interview|
+      interview.progresses.each do |progress|
+        chartdata << {'percentage' => progress.percentage, 'date' => progress.created_at}
+      end
+    end
+    render :json => chartdata
+  end
+
+
   def search
     query = params[:query]
     @interviews = Interview.where("name @@ :q", :q => query)
-
     tags = Tag.where("name @@ :q", :q => query)
     @interviews += tags.map(&:interviews).flatten
     @interviews.uniq!
-
     render :filter
-  end
-
-  def interviewchart
-    i = @auth.progresses.map do |progress|
-      {'num_right' => progress.num_right, 'date' => progress.created_at}
-    end
-    render :json => i
   end
 
   def analytics
@@ -54,7 +56,13 @@ class InterviewsController < ApplicationController
       @interview.tags << t
     end
     @interviews = Interview.all
+    end
+
+
+  def show
+    @interview = Interview.find(params[:id])
+    @answer = Answer.new
+    @progress = Progress.create
   end
-
-
 end
+
