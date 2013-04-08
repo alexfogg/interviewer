@@ -73,6 +73,7 @@ class InterviewsController < ApplicationController
 
   def purchase
     interview = Interview.find(params[:id])
+    house = User.where(:is_house => true).first
 
     begin
       if @auth.customer_id.nil?
@@ -88,6 +89,8 @@ class InterviewsController < ApplicationController
     if @error.nil?
       @auth.interviews << interview
       @auth.balance = @auth.balance.to_f - (interview.cost).to_f
+      interview.user.balance.to_f += (interview.cost.to_f * 0.85)
+      house.balance.to_f += (interview.cost.to_f * 0.15)
       @auth.save
       Notifications.purchased_interview(@auth, interview).deliver
     end

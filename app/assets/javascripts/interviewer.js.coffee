@@ -37,11 +37,18 @@ window.app =
     $("#reg_form").show()
   filter_interviews: (e) ->
     query = $('#searchinterview').val()
-    settings =
-      dataType: 'script'
-      type: 'get'
-      url: "/interviews/search?query=#{query}"
-    $.ajax(settings)
+    if query.length == 0
+      settings =
+        dataType: 'script'
+        type: 'get'
+        url: '/interviews'
+      $.ajax(settings)
+    else
+      settings =
+        dataType: 'script'
+        type: 'get'
+        url: "/interviews/search?query=#{query}"
+      $.ajax(settings)
   submit: (e) ->
     a = $(this).parent().children('input:checked')  #gets the array, c is answer ids
     interview_id = parseInt($('.q').first().attr('data-interview-id'))
