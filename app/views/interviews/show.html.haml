@@ -9,7 +9,7 @@
       - question.answers.each do |answer|
         %br
         %input{:name => "is_correct", :type => "checkbox", :class => 'check', :'data-answer-id' => answer.id }
-        = answer.response
+        .resp= answer.response
       %br
       .submitAnswer
         Submit

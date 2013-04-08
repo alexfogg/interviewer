@@ -22,8 +22,9 @@ def create
 
     @progress = Progress.find(params[:progress_id])
 
-    if @correct_answers_ids == @answers_ids
+    if @correct_answers_ids == @answer_ids
       @progress.num_right += 1
+      @correct = true
     else
       @progress.num_wrong += 1
     end

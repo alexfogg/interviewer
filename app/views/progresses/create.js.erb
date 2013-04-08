@@ -5,7 +5,22 @@
 console.log('hi')
 
 a= $('*[data-question-id= <%= @question_id %>]');
-c= a.data('question-id')
+question_id = a.data('question-id')
+
+checked= a.children('input:checked')
+
+<% if @correct.present? %>
+response = checked.next().css({'color':'green', 'font-style':'italics', 'font-weight':'bold'})
+<% else %>
+response = checked.next().css({'color':'red', 'font-style':'italics', 'font-weight':'bold'})
+<% end %>
+
+submitbox = a.children('.submitAnswer').hide()
+
+disabled = a.find("input:checkbox").attr("disabled",true)
+
+
+// disabled = question.find("input:checkbox").attr("disabled", true);
 
 
 
