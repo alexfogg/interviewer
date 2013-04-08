@@ -18,12 +18,12 @@ class InterviewsController < ApplicationController
   end
 
   def interviewchart
+
+
     chartdata = []
-    Interview.all.each do |interview|
-      interview.progresses.each do |progress|
+    Interview.find(params[:id]).progresses.each do |progress|
         chartdata << {'percentage' => progress.percentage, 'date' => progress.created_at}
       end
-    end
     render :json => chartdata
   end
 
@@ -39,8 +39,8 @@ class InterviewsController < ApplicationController
 
   def analytics
     @users = User.all
-    @progresses = Progress.all
     @interview = Interview.find(params[:id])
+    @progresses = @interview.progresses
   end
 
 
@@ -48,13 +48,10 @@ class InterviewsController < ApplicationController
     @interview = Interview.create(params[:interview])
     @auth.interviews << @interview
 
-    tags = params[:tags].split(',')
-    tags.each do |tag|
-      tag = tag.squish
-      t = Tag.where(name: tag).first
-      t = Tag.new(name: tag) if t.nil?
-      @interview.tags << t
-    end
+
+
+    @interview.tags = Tags.make_tags(params[:tags])
+
     @interviews = Interview.all
     end
 
@@ -64,6 +61,7 @@ class InterviewsController < ApplicationController
     @progress = Progress.create
     if @auth.interviews.where(:id => @interview.id).present?
     @auth.interviews.where(:id => @interview.id).first.progresses << @progress
+    @auth.progresses << @progress
   else
     @auth.interviews << @interview
       @auth.interviews.where(:id => @interview.id).first.progresses << @progress
