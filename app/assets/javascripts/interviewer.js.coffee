@@ -23,6 +23,12 @@ window.app =
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('body').on('keyup', '#searchinterview', app.filter_interviews)
     $('.submitAnswer').click(app.submit)
+    # $('body').on('keyup', '#search', app.filter_interviews) ## add filter interviews
+    $('body').on('token', '.stripe-button', app.token_generated)
+  token_generated: (e, token) ->
+    e.preventDefault()
+    $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
+    console.log(token)
   clear_reg_form: (e) ->
     e.preventDefault()
     $("#reg_form").hide()
@@ -39,18 +45,16 @@ window.app =
   submit: (e) ->
     a = $(this).parent().children('input:checked')  #gets the array, c is answer ids
     interview_id = parseInt($('.q').first().attr('data-interview-id'))
-    console.log(interview_id)
     token = $('#show').data('auth-token')
+    question_id = $(this).parent().attr('data-question-id')
     c = []
     progress_id = $('.progress').text()
     (a).each (idx, el) ->
       c.push $(this).attr("data-answer-id")
     settings =
-      datatype: 'json'
-      data: {authenticity_token: token, answer_ids: c, progress_id: progress_id }
-      type: "get"
+      datatype: 'script'
+      data: {authenticity_token: token, answer_ids: c, progress_id: progress_id, question_id: question_id, interview_id: interview_id }
+      type: "post"
       url: "/progresses/#{interview_id}"
     $.ajax(settings)
 $(document).ready(app.document_ready)
-
-

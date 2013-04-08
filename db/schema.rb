@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130407040458) do
   create_table "progresses", :force => true do |t|
     t.integer  "num_right",    :default => 0
     t.integer  "num_wrong",    :default => 0
-    t.decimal  "percentage"
+    t.float    "percentage"
     t.integer  "interview_id"
     t.integer  "user_id"
     t.datetime "created_at",                  :null => false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130407040458) do
     t.boolean  "is_house",        :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "customer_id"
   end
 
 end

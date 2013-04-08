@@ -62,7 +62,36 @@ class InterviewsController < ApplicationController
     @interview = Interview.find(params[:id])
     @answer = Answer.new
     @progress = Progress.create
+    if @auth.interviews.where(:id => @interview.id).present?
     @auth.interviews.where(:id => @interview.id).first.progresses << @progress
+  else
+    @auth.interviews << @interview
+      @auth.interviews.where(:id => @interview.id).first.progresses << @progress
+    end
   end
+
+
+  def purchase
+    interview = Interview.find(params[:id])
+
+    begin
+      if @auth.customer_id.nil?
+        customer = Stripe::Customer.create(email: @auth.email, card: params[:token])
+        @auth.customer_id = customer.id
+        @auth.save
+      end
+      Stripe::Charge.create(customer: @auth.customer_id, amount: (interview.cost * 100).to_i, description: interview.name, currency: 'usd')
+
+    rescue Stripe::CardError => @error
+    end
+
+    if @error.nil?
+      @auth.interviews << interview
+      # Notifications.purchased_interview(@auth, interview).deliver
+    end
+
+    @interviews = Interview.filtered
+  end
+
 end
 

@@ -5,7 +5,7 @@ Progress.delete_all
 Tag.delete_all
 User.delete_all
 
-u1 = User.create(email: 'bob@gmail.com', name: 'bob', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '200 park ave, ny', phone: '1234567890', balance: 500.00)
+u1 = User.create(email: 'bob@gmail.com', name: 'bob', password: 'a', password_confirmation: 'a', image: 'http://www.pacific.edu/Images/news/bob_dylan_4.jpg', address: '200 park ave, ny', phone: '1234567890', balance: 500.00)
 u2 = User.create(email: 'adi@gmail.com', name: 'adi', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '100 park ave, ny', phone: '2234567890', balance: 300.00)
 u3 = User.create(email: 'joe@gmail.com', name: 'joe', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '300 park ave, ny', phone: '3234567890', balance: 200.00)
 
@@ -22,6 +22,18 @@ q5 = Question.create(question: 'What is DOM?', category: 'Basic JS')
 q6 = Question.create(question: 'What is Coffeescript?', category: 'Basic JS')
 q7 = Question.create(question: 'What is D3?', category: 'Advanced JS')
 q8 = Question.create(question: 'What is Dancer JS?', category: 'Advanced JS')
+
+q9 = Question.create(question: 'What is a string?', category: 'Basic Ruby')
+q10 = Question.create(question: 'What does the map function do?', category: 'Basic Ruby')
+
+q11 = Question.create(question: 'What does it mean to be a Ruby Ninja?', category: 'Advanced Ruby')
+q12 = Question.create(question: 'What is the difference between .map and .map! ?', category: 'Advanced Ruby')
+
+q13 = Question.create(question: 'What you end any line in JS with?', category: 'Basic JS')
+q14 = Question.create(question: 'What does DOM stand for?', category: 'Basic JS')
+
+q15 = Question.create(question: 'What does window mean in coffee?', category: 'Advanced JS')
+q16 = Question.create(question: 'What does underscore do?', category: 'Advanced JS')
 
 a1 = Answer.create(response: 'array', is_correct: true)
 a2 = Answer.create(response: 'not array', is_correct: false)
@@ -66,10 +78,10 @@ u2.progresses << p3
 u3.progresses << p4
 
 
-i1.questions = [q1, q2]
-i2.questions = [q3, q4]
-i3.questions = [q5, q6]
-i4.questions = [q7, q8]
+i1.questions = [q1, q2, q9, q10]
+i2.questions = [q3, q4, q11, q12]
+i3.questions = [q5, q6, q13, q14]
+i4.questions = [q7, q8, q15, q16]
 
 q1.answers = [a1, a2]
 q2.answers = [a3, a4]
