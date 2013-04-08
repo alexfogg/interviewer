@@ -81,6 +81,8 @@ class InterviewsController < ApplicationController
 
     if @error.nil?
       @auth.interviews << interview
+      @auth.balance = @auth.balance.to_f - (interview.cost).to_f
+      @auth.save
       Notifications.purchased_interview(@auth, interview).deliver
     end
 
