@@ -11,10 +11,13 @@ $('#add_answer').empty().append('<%=link_to('Add Answer', new_answers_path(@ques
 <% end %>
 
 
-<% if @interview.questions.count == 4 && @question.answers.count >4 && @question.answers.where(:is_correct => true).present? %>
+<% if @interview.questions.count == 4 && @question.answers.count > 4 && @question.answers.where(:is_correct => true).present? %>
 
    document.location.href = '/'
 <% end %>
+
+
+
 
 
 

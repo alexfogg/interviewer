@@ -58,12 +58,18 @@ class InterviewsController < ApplicationController
     @interviews = Interview.all
     end
 
-
   def show
     @interview = Interview.find(params[:id])
     @answer = Answer.new
     @progress = Progress.create
+    if @auth.interviews.where(:id => @interview.id).present?
+    @auth.interviews.where(:id => @interview.id).first.progresses << @progress
+  else
+    @auth.interviews << @interview
+      @auth.interviews.where(:id => @interview.id).first.progresses << @progress
+    end
   end
+
 
   def purchase
     interview = Interview.find(params[:id])
@@ -81,6 +87,8 @@ class InterviewsController < ApplicationController
 
     if @error.nil?
       @auth.interviews << interview
+      @auth.balance = @auth.balance.to_f - (interview.cost).to_f
+      @auth.save
       Notifications.purchased_interview(@auth, interview).deliver
     end
 

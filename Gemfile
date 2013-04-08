@@ -12,6 +12,7 @@ gem 'remotipart'
 gem 'geocoder'
 gem 'aws-ses'
 gem 'stripe'
+gem 'twilio-ruby'
 
 group :assets do
   gem 'sass-rails'

@@ -43,9 +43,18 @@ window.app =
       url: "/interviews/search?query=#{query}"
     $.ajax(settings)
   submit: (e) ->
-    a = $(this).parent().children('input:checked')  #gets the array
-    console.log(a.first().attr('data-answer-id'))
-    b= _.pluck(a, attr('data-answer-id'));
-    console.log(b[0]) # i can't do ajax calls unless I get the array of ids.
-
+    a = $(this).parent().children('input:checked')  #gets the array, c is answer ids
+    interview_id = parseInt($('.q').first().attr('data-interview-id'))
+    token = $('#show').data('auth-token')
+    question_id = $(this).parent().attr('data-question-id')
+    c = []
+    progress_id = $('.progress').text()
+    (a).each (idx, el) ->
+      c.push $(this).attr("data-answer-id")
+    settings =
+      datatype: 'script'
+      data: {authenticity_token: token, answer_ids: c, progress_id: progress_id, question_id: question_id, interview_id: interview_id }
+      type: "post"
+      url: "/progresses/#{interview_id}"
+    $.ajax(settings)
 $(document).ready(app.document_ready)
