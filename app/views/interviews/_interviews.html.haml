@@ -1,20 +1,19 @@
 = link_to('New Interview', new_interview_path, :class => 'button tiny success') if @auth.present?
 = link_to('Show All', root_path, :class => 'button tiny succcess') if @auth.present?
 
-- if @auth.present?
-  %h2 Interviews
-  #form
-  %table
-    %tr
-      %th Name
-      %th Cost
-      %th Threshold %
-      %th # Passing
-      %th # Fails
-      %th Owner
-      %th Analytics
-      %th Purchase
-      %th Tags
+%h2 Interviews
+#form
+%table
+  %tr
+    %th Name
+    %th Cost
+    %th Threshold %
+    %th # Passing
+    %th # Fails
+    %th Owner
+    %th Analytics
+    %th Purchase
+    %th Tags
     - @interviews.each do |interview|
       %tr
         %td= link_to(interview.name, interview_path(interview))
@@ -32,10 +31,10 @@
                 :'data-key' => Rails.configuration.stripe[:publishable_key]}
         = form_tag purchase_interview_path(interview), :remote => true do end
 
-
-
         %td
           = interview.tags.map(&:name).join(', ')
+
+
 
 
 

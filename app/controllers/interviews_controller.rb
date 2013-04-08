@@ -49,8 +49,8 @@ class InterviewsController < ApplicationController
     @auth.interviews << @interview
 
 
-
-    @interview.tags = Tags.make_tags(params[:tags])
+    binding.pry
+    @interview.tags = Tag.make_tags(params[:tags])
 
     @interviews = Interview.all
     end
@@ -71,6 +71,7 @@ class InterviewsController < ApplicationController
 
   def purchase
     interview = Interview.find(params[:id])
+    house = User.where(:is_house => true).first
 
     begin
       if @auth.customer_id.nil?
@@ -86,6 +87,8 @@ class InterviewsController < ApplicationController
     if @error.nil?
       @auth.interviews << interview
       @auth.balance = @auth.balance.to_f - (interview.cost).to_f
+      interview.user.balance.to_f += (interview.cost.to_f * 0.85)
+      house.balance.to_f += (interview.cost.to_f * 0.15)
       @auth.save
       Notifications.purchased_interview(@auth, interview).deliver
     end
