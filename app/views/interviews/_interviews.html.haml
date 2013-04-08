@@ -25,10 +25,15 @@
         %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
         %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert analyticschart')
         %td
-          - if @auth.customer_id.present?
-            = render :partial => 'interviews/customer', :locals => {:interview => interview}
-          - else
-            = render :partial => 'interviews/anonymous', :locals => {:interview => interview}
+        %script{:src => "https://checkout.stripe.com/v2/checkout.js",
+                :class => "stripe-button",
+                :'data-label' => interview.name,
+                :'data-amount' => interview.cost * 100,
+                :'data-key' => Rails.configuration.stripe[:publishable_key]}
+        = form_tag purchase_interview_path(interview), :remote => true do end
+
+
+
         %td
           = interview.tags.map(&:name).join(', ')
 
@@ -38,3 +43,10 @@
 / %td
 / - interview.tags.each do |tag|
 /   = link_to("#{tag.name} - #{tag.interviews.count}", filter_interviews_path(tag.id), :remote => true, :class => 'button tiny radius secondary')
+
+
+
+/ - if @auth.customer_id.present?
+/   = render :partial => 'interviews/customer', :locals => {:interview => interview}
+/ - else
+/   = render :partial => 'interviews/anonymous', :locals => {:interview => interview}
