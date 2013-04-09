@@ -10,7 +10,7 @@
       %th Number of Attempts
     - @interview.progresses.each do |progress|
       %tr
-        %td= progress.user.name
+        %td{data: { average: @interview.avg_score }}= progress.user.name
         %td= progress.created_at
         %td= number_to_percentage(@interview.progresses.last.last_score)
         %td= number_to_percentage(@interview.avg_score)

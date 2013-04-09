@@ -4,13 +4,29 @@
 
 console.log('hi')
 
-a= $('*[data-question-id= <%= @question_id %>]');
-c= a.data('question-id')
+a= $('*[data-question-id= <%= @question.id %>]');
+question_id = a.data('question-id')
+
+checked= a.children('input:checked')
+
+<% if @correct %>
+response = checked.next().css({'color':'green', 'font-style':'italics', 'font-weight':'bold'})
+<% else %>
+response = checked.next().css({'color':'red', 'font-style':'italics', 'font-weight':'bold'})
+<% end %>
 
 
+submitbox = a.children('.submitAnswer').hide()
+
+disabled = a.find("input:checkbox").attr("disabled",true)
+
+$('#score').removeClass('hide').empty().append('<h2>Score: <%= @progress.percentage %></h2>')
 
 
-
-
+<% if @progress.total && @progress.passing %>
+  $('#PassFail').append('<h3><%= link_to('You Passed!', root_path) %></h3>')
+<% elsif @progress.total %>
+  $('#PassFail').append('<h3><%= link_to('You Failed!', root_path) %></h3>')
+<% end %>
 
 

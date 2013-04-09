@@ -1,52 +1,36 @@
 = link_to('New Interview', new_interview_path, :class => 'button tiny success') if @auth.present?
 = link_to('Show All', root_path, :class => 'button tiny succcess') if @auth.present?
 
-- if @auth.present?
-  %h2 Interviews
-  #form
-  %table
-    %tr
-      %th Name
-      %th Cost
-      %th Threshold %
-      %th # Passing
-      %th # Fails
-      %th Owner
-      %th Analytics
-      %th Purchase
-      %th Tags
+%h2 Interviews
+#form
+%table
+  %tr
+    %th Name
+    %th Cost
+    %th Threshold %
+    %th # Passing
+    %th # Fails
+    %th Owner
+    %th Analytics
+    %th Purchase
+    %th Tags
     - @interviews.each do |interview|
       %tr
         %td= link_to(interview.name, interview_path(interview))
         %td= number_to_currency(link_to(interview.cost, cost_interviews_path(interview.cost), :remote => true))
-        %td= interview.threshold
-        %td Passing
-        %td Fails
+        %td= number_to_percentage(interview.threshold)
+        %td= interview.passing
+        %td= interview.failing
         %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
         %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert analyticschart')
         %td
-        %script{:src => "https://checkout.stripe.com/v2/checkout.js",
-                :class => "stripe-button",
-                :'data-label' => interview.name,
-                :'data-amount' => interview.cost * 100,
-                :'data-key' => Rails.configuration.stripe[:publishable_key]}
-        = form_tag purchase_interview_path(interview), :remote => true do end
+          %script{:src => "https://checkout.stripe.com/v2/checkout.js",
+                  :class => "stripe-button",
+                  :'data-label' => interview.name,
+                  :'data-amount' => interview.cost * 100,
+                  :'data-key' => Rails.configuration.stripe[:publishable_key]}
+            = form_tag purchase_interview_path(interview), :remote => true do end
+        %td= interview.tags.map(&:name).join(', ')
 
 
 
-        %td
-          = interview.tags.map(&:name).join(', ')
-
-
-
-/ %td= interview.progress.num_right
-/ %td
-/ - interview.tags.each do |tag|
-/   = link_to("#{tag.name} - #{tag.interviews.count}", filter_interviews_path(tag.id), :remote => true, :class => 'button tiny radius secondary')
-
-
-
-/ - if @auth.customer_id.present?
-/   = render :partial => 'interviews/customer', :locals => {:interview => interview}
-/ - else
-/   = render :partial => 'interviews/anonymous', :locals => {:interview => interview}
