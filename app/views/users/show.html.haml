@@ -1,71 +1,52 @@
 %script
   $(document).ready(show_chart);
 
-.row
+.row.stats
   .large-4.columns
-    %h2 User Portrait
-    = image_tag @auth.image
-    %h2 Map
-    #map_canvas
-      %script
-        display_map(40.7316, -73.9901, 11);
-        = "add_marker(#{@auth.lat}, #{@auth.lng}, '#{@auth.name}');"
-    %h3 Add Interview
-    =link_to('Add Interview', new_interview_path, :class => 'button small radius info')
 
-  .large-8.columns
-    %h2 Informatics
+    = image_tag @auth.image
     %table
-      %thead
-        %tr
-          %th Name
-          %th Address
-          %th Email
-          %th Phone
-          %th Balance
       %tbody
         %tr
-          %td= @auth.name
+          %td= @auth.name.titleize
           %td= @auth.address
           %td= @auth.email
           %td= @auth.phone
           %td= number_to_currency(@auth.balance)
-
-
-.row
-  .large-12.columns
-    %h4 My Interviews
-    %table
-      %thead
+    #map_canvas
+      %script
+        display_map(40.7316, -73.9901, 11);
+        = "add_marker(#{@auth.lat}, #{@auth.lng}, '#{@auth.name}');"
+  .large-8.columns
+    / %h2 Informatics
+.row.stats
+  %table
+    %thead
+      %tr
+        %th Interviews Taken
+        %th Retake?
+        %th Score
+        %th # Right
+        %th # Wrong
+        %th Author
+        %th Date
+    %tbody
+      - @auth.progresses.each do |progress|
         %tr
-          %th Name
-      %tbody
-        - @auth.interviews.each do |interview|
-          %tr
-            %td= link_to(interview.name, interview_path(interview))
-.row
-  .large-12.columns
-    %h4 Interviews I Have Taken
-    %table
-      %thead
-        %tr
-          %th Name
-          %th Date
-          %th Score
-          %th Number Right
-          %th Number Wrong
-          %th Author
-          %th Retake?
-      %tbody
-        - @auth.progresses.each do |progress|
-          %tr
-            %td= progress.interview.name
-            %td 4/20/1969
-            %td= progress.percentage
-            %td= progress.num_right
-            %td= progress.num_wrong
-            %td= progress.interview.user.name
-            %td= link_to('Retake', interview_path)
-
-  .large-12.columns
-    #chart
+          %td= progress.interview.name
+          %td= link_to('Retake', interview_path)
+          %td= progress.percentage
+          %td= progress.num_right
+          %td= progress.num_wrong
+          %td= progress.interview.user.name
+          %td= progress.updated_at
+  #chart
+.row.stats
+  %table
+    %thead
+      %tr
+        %th My Interviews
+        %th= link_to('Add Interview', new_interview_path, :class => 'test_btn')
+    - @auth.interviews.each do |interview|
+      %tr
+        %td= link_to(interview.name, interview_path(interview))

@@ -1,4 +1,6 @@
+%h3 Interviews
 = text_field_tag :searchinterview, nil, :autofocus => true
+= link_to('New Interview', new_interview_path, :class => 'test_btn') if @auth.present?
 #interviews
   = render 'interviews'
 #analytics

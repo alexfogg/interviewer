@@ -13,6 +13,7 @@ Interviewer::Application.routes.draw do
   resources :interviews do
     member do
       get 'analytics', :action => :analytics, :as => :analytics
+      post 'purchase'
     end
     collection do
       get 'search'
@@ -37,7 +38,7 @@ Interviewer::Application.routes.draw do
 
   resources :progresses, :only => [:index] do
     collection do
-      get '/:interview_id',  :action => :create, :as => :create
+      post '/:interview_id',  :action => :create, :as => :create
     end
   end
 

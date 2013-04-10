@@ -17,6 +17,7 @@ class Interview < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :questions
   belongs_to :user
+  scope :filtered, where('user_id is null').order(:name)
 
   def avg_score
     r = self.progresses.map(&:num_right).inject(:+)

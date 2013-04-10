@@ -15,6 +15,7 @@
 #  is_house        :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  customer_id     :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -34,4 +35,10 @@ class User < ActiveRecord::Base
       self.lng = result.longitude
     end
   end
+  
+  def text_result(phone)
+    client = Twilio::REST::Client.new(ENV['TW_SID'], ENV['TW_TOK'])
+    client.account.sms.messages.create(:from => '+19172846078', :to => @user.phone, :body => 'a' )
+  end
+
 end
