@@ -73,7 +73,7 @@ class InterviewsController < ApplicationController
 
   def purchase
     interview = Interview.find(params[:id])
-
+    binding.pry
     begin
       if @auth.customer_id.nil?
         customer = Stripe::Customer.create(email: @auth.email, card: params[:token])
