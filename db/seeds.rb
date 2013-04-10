@@ -9,9 +9,9 @@ u1 = User.create(email: 'bob@gmail.com', name: 'bob', password: 'a', password_co
 u2 = User.create(email: 'adi@gmail.com', name: 'adi', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '100 park ave, ny', phone: '2234567890', balance: 300.00)
 u3 = User.create(email: 'joe@gmail.com', name: 'joe', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '300 park ave, ny', phone: '+19175678998', balance: 200.00)
 
-i1 = Interview.create(name: 'Basic Ruby', cost: 5.00, threshold: 50.00)
+i1 = Interview.create(name: 'Basic Ruby', cost: 0.00, threshold: 50.00)
 i2 = Interview.create(name: 'Advanced Ruby', cost: 10.00, threshold: 50.00)
-i3 = Interview.create(name: 'Basic JS', cost: 5.00, threshold: 50.00)
+i3 = Interview.create(name: 'Basic JS', cost: 0.00, threshold: 50.00)
 i4 = Interview.create(name: 'Advanced JS', cost: 10.00, threshold: 50.00)
 
 q1 = Question.create(question: 'What is an array?', category: 'Basic Ruby')
@@ -104,6 +104,11 @@ i4.progresses << p4
 u1.progresses << p1 << p2
 u2.progresses << p3
 u3.progresses << p4
+
+p1.user = u1
+p2.user = u1
+p3.user = u2
+p4.user = u3
 
 
 i1.questions = [q1, q2, q9, q10]

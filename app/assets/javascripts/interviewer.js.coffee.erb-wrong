@@ -59,7 +59,7 @@ window.app =
     (a).each (idx, el) ->
       c.push $(this).attr("data-answer-id")
     settings =
-      datatype: 'script'
+     datatype: 'script'
       data: {authenticity_token: token, answer_ids: c, progress_id: progress_id, question_id: question_id, interview_id: interview_id }
       type: "post"
       url: "/progresses/#{interview_id}"

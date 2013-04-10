@@ -25,7 +25,7 @@ class Interview < ActiveRecord::Base
     r = self.progresses.map(&:num_right).inject(:+)
     w = self.progresses.map(&:num_wrong).inject(:+)
     t = r.to_f + w.to_f
-    (r.to_f / t) * 100
+    (r.to_f / t.to_f) * 100
   end
 
 end
