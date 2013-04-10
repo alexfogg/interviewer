@@ -20,13 +20,13 @@ submitbox = a.children('.submitAnswer').hide()
 
 disabled = a.find("input:checkbox").attr("disabled",true)
 
-$('#score').removeClass('hide').empty().append('<h2>Score: <%= @progress.percentage %></h2>')
+$('#score').removeClass('hide').empty().append('<h2>Score: <%= @progress.percentage %>%</h2>')
 
 
 <% if @progress.total && @progress.passing %>
-  $('#PassFail').append('<h3><%= link_to('You Passed!', root_path) %></h3>')
+  $('#PassFail').append('<h3><%= link_to('You Passed!', passed_redirect_progresses_path(@progress), :class => 'passed') %></h3>')
 <% elsif @progress.total %>
-  $('#PassFail').append('<h3><%= link_to('You Failed!', root_path) %></h3>')
+  $('#PassFail').append('<h3><%= link_to('You Suck, Asshole!', passed_redirect_progresses_path(@progress), :class => 'failed') %></h3>')
 <% end %>
 
 

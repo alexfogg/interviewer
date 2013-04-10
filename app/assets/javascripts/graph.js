@@ -1,8 +1,3 @@
- $(function(){
-  show_chart();
-  // $('.analyticschart').click(show_chart2);
-});
-
 function show_chart()
 {
   $.ajax({

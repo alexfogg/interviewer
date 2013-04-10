@@ -3,4 +3,8 @@ $('#questionform').empty()
 $('#quest_title').empty().append('<h3>Question: <%= @question.question %></h3>');
 $('#add_question').hide()
 
-$('#add_answer').append('<%=link_to('Add Answer', new_answers_path(@question), :remote => true, :class => 'button tiny')  %>');
+$('#add_answer').append('<%=link_to('Add Answer', new_answers_path(@question), :remote => true, :class => 'button tiny answer')  %>');
+
+
+
+

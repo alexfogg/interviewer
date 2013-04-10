@@ -3,8 +3,8 @@
 # Table name: progresses
 #
 #  id           :integer          not null, primary key
-#  num_right    :integer
-#  num_wrong    :integer
+#  num_right    :integer          default(0)
+#  num_wrong    :integer          default(0)
 #  percentage   :float
 #  interview_id :integer
 #  user_id      :integer

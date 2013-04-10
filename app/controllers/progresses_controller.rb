@@ -4,12 +4,19 @@ class ProgressesController < ApplicationController
 def index
 end
 
+def passed_redirect
+p = Progress.find(params["progress_id"])
+@auth.text_result(@auth, p)
+binding.pry
+redirect_to root_path
+end
+
 def create
 
   @interview = Interview.find(params[:interview_id])
-  binding.pry
+
  @question = Question.find(params[:question_id])
-  # binding.pry
+  #
   @progress = Progress.find(params[:progress_id])
   @correct = @progress.check(params[:answer_ids])
 

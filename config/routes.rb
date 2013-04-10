@@ -39,6 +39,7 @@ Interviewer::Application.routes.draw do
   resources :progresses, :only => [:index] do
     collection do
       post '/:interview_id',  :action => :create, :as => :create
+      get '/passed_redirect/:progress_id', :action => :passed_redirect, :as => :passed_redirect
     end
   end
 

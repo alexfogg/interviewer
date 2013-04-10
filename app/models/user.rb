@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   geocoded_by :address
 
   before_save:geocode
-    def geocode
+  def geocode
     result = Geocoder.search(self.address).first
 
     if result.present?
@@ -35,10 +35,16 @@ class User < ActiveRecord::Base
       self.lng = result.longitude
     end
   end
-  
-  def text_result(phone)
+
+  def text_result(user, progress)
+    interview = progress.interview
+    a = (interview.passing)/(interview.passing + interview.failing)
     client = Twilio::REST::Client.new(ENV['TW_SID'], ENV['TW_TOK'])
-    client.account.sms.messages.create(:from => '+19172846078', :to => @user.phone, :body => 'a' )
+    if progress.passing
+      client.account.sms.messages.create(:from => '+17329630742', :to => '+17324039102', :body => "Congrats #{user.name.titleize}, you have passed #{progress.interview.name} with a #{progress.percentage}%. The passing rate on this exam was #{a}%" )
+    else
+      client.account.sms.messages.create(:from => '+17329630742', :to => '+17324039102', :body => "Sorry #{user.name.titleize}, you have failed #{progress.interview.name} with a #{progress.percentage}%. The passing rate on this exam was #{a}%. May god have mercy on your poor soul." )
+    end
   end
 
 end

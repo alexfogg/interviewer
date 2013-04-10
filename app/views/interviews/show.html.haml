@@ -1,5 +1,5 @@
 #show{:'data-auth-token' => form_authenticity_token}
-  #score.hide= "Score: #{@progress.last_score if @progress.last_score.present?} "
+  #score.hide= "Score: #{number_to_percentage(@progress.last_score) if @progress.last_score.present?} "
   - @interview.name
   .progress.hide= @progress.id
   %br

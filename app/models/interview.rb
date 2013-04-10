@@ -9,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  threshold  :decimal(, )
+#  passing    :integer          default(0)
+#  failing    :integer          default(0)
 #
 
 class Interview < ActiveRecord::Base

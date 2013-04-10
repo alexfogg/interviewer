@@ -49,7 +49,7 @@ class InterviewsController < ApplicationController
     @auth.interviews << @interview
 
 
-    binding.pry
+
     @interview.tags = Tag.make_tags(params[:tags])
 
     @interviews = Interview.all
