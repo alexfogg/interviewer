@@ -69,6 +69,7 @@ class InterviewsController < ApplicationController
   def purchase
     interview = Interview.find(params[:id])
     house = User.where(:is_house => true).first
+    
     begin
       if @auth.customer_id.nil?
         customer = Stripe::Customer.create(email: @auth.email, card: params[:token])
