@@ -7,9 +7,7 @@ end
 def create
 
   @interview = Interview.find(params[:interview_id])
-  binding.pry
- @question = Question.find(params[:question_id])
-  # binding.pry
+  @question = Question.find(params[:question_id])
   @progress = Progress.find(params[:progress_id])
   @correct = @progress.check(params[:answer_ids])
 

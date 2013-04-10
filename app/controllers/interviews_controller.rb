@@ -47,9 +47,6 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.create(params[:interview])
     @auth.interviews << @interview
-
-
-    binding.pry
     @interview.tags = Tag.make_tags(params[:tags])
 
     @interviews = Interview.all
