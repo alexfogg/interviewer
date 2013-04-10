@@ -3,8 +3,8 @@ module ApplicationHelper
     nav=""
     if @auth.present?
       nav += "<li>#{link_to('All Interviews', interviews_path)}</li>"
-      nav += "<li>#{link_to('Profile', user_path(@auth), :class => 'button tiny success')}</li>"
-      nav += "<li>#{link_to(@auth.email, login_path, :method => :delete, :remote => true, :class => 'button tiny alert')}</li>"
+      nav += "<li>#{link_to('Profile', user_path(@auth))}</li>"
+      nav += "<li>#{link_to(@auth.email, login_path, :method => :delete)}</li>"
     else
 
       nav += "<li>#{link_to("Login", login_path, :remote => true, :id => 'login')}</li>"
