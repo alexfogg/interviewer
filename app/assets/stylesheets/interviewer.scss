@@ -1,11 +1,48 @@
+// #map_canvas {
+//   width: 300px;
+//   height: 300px;
+// }
+
+// #chart
+// {
+//   height: 400px;
+// }
+
+// .hide{
+//   display: none;
+// }
+
+
+// #interviewchart
+// {
+//   height: 400px;
+// }
+
+// .submitAnswer{
+//   height: 25px;
+//   width: 65px;
+//   padding: 5px;
+//   border: 2px solid blue;
+//   background-color: pink;
+//   margin: 5px;
+// }
+
+// .resp{
+//   float: left;
+// }
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
 #map_canvas {
   width: 300px;
-  height: 300px;
+  height: 200px;
 }
 
 #chart
 {
-  height: 400px;
+  height: 200px;
+  width: 617px;
+  // background: white;
 }
 
 .hide{
@@ -27,6 +64,105 @@
   margin: 5px;
 }
 
-.resp{
-  float: left;
+body, .panel
+{
+  background: #c9fceb;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  border: 0px;
+}
+
+.button, .small, .radius, .info, .tiny
+{
+  background: black;
+  font-family: helvetica;
+  border: 0px;
+}
+
+ .stripe-button-el span
+{
+  font-size: 10px !important;
+  background: black !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  height: 20px !important;
+  border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+background-image: transparent;
+}
+
+table, ol table
+{
+  background: transparent !important;
+  border: 0px;
+  color: #fff;
+    padding: 0px;
+  margin: 0px;
+  text-align: left;
+}
+
+thead, th
+{
+  background: #13ad79 !important;
+  border-bottom: 2px solid white !important;
+  color: white !important;
+}
+
+tr
+{
+  background: transparent !important;
+}
+
+h3, h4
+{
+  background: #13ad79;
+  font-family: helvetica;
+  color: #fff;
+  padding: 8px;
+  border-bottom: 3px solid white;
+  width: 338px;
+}
+
+.top-bar
+{
+background: #13ad79;
+border-bottom: 3px solid white;
+padding-bottom: 4px;
+}
+
+.top-bar-section li a:not(.button), .top-bar-section li a:not(.button):hover
+{
+background: #13ad79;
+height: 30px;
+}
+
+.panel
+{
+  padding: 0px;
+}
+
+.row
+{
+  max-width: 100%;
+  background: #c9fceb;
+  padding: 10px;
+}
+
+.columns, .large-12
+{
+  width: 100%;
+}
+
+.stats
+{float:left;
+padding: 10px;
+background: #eee;
+border-radius: 10px;
+margin: 10px;}
+
+.test_btn
+{
+  background: white;
+  color: black;
 }

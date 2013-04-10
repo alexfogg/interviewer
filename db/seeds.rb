@@ -9,9 +9,9 @@ u1 = User.create(email: 'bob@gmail.com', name: 'bob', password: 'a', password_co
 u2 = User.create(email: 'adi@gmail.com', name: 'adi', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '100 park ave, ny', phone: '2234567890', balance: 300.00)
 u3 = User.create(email: 'joe@gmail.com', name: 'joe', password: 'a', password_confirmation: 'a', image: 'http://i.imgur.com/ZCqfy3C.jpg', address: '300 park ave, ny', phone: '+19175678998', balance: 200.00)
 
-i1 = Interview.create(name: 'Basic Ruby', cost: 5.00, threshold: 50.00)
+i1 = Interview.create(name: 'Basic Ruby', cost: 0.00, threshold: 50.00)
 i2 = Interview.create(name: 'Advanced Ruby', cost: 10.00, threshold: 50.00)
-i3 = Interview.create(name: 'Basic JS', cost: 5.00, threshold: 50.00)
+i3 = Interview.create(name: 'Basic JS', cost: 0.00, threshold: 50.00)
 i4 = Interview.create(name: 'Advanced JS', cost: 10.00, threshold: 50.00)
 
 q1 = Question.create(question: 'What is an array?', category: 'Basic Ruby')
@@ -80,10 +80,10 @@ a14 = Answer.create(response: 'not D3', is_correct: false)
 a15 = Answer.create(response: 'Dancer JS', is_correct: true)
 a16 = Answer.create(response: 'not Dancer JS', is_correct: false)
 
-p1 = Progress.create(num_right: 25, num_wrong: 67, percentage: 8.69)
-p2 = Progress.create(num_right: 7, num_wrong: 34, percentage: 15.70)
-p3 = Progress.create(num_right: 18, num_wrong: 93, percentage: 49.13)
-p4 = Progress.create(num_right: 56, num_wrong: 15, percentage: 92.35)
+p1 = Progress.create(num_right: 3, num_wrong: 1, percentage: 8.69)
+p2 = Progress.create(num_right: 2, num_wrong: 2, percentage: 15.70)
+p3 = Progress.create(num_right: 0, num_wrong: 4, percentage: 49.13)
+p4 = Progress.create(num_right: 4, num_wrong: 0, percentage: 92.35)
 
 t1 = Tag.create(name: 'Ruby')
 t2 = Tag.create(name: 'JS')

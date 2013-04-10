@@ -7,28 +7,17 @@ end
 def create
 
   @interview = Interview.find(params[:interview_id])
-  @answers = params[:answer_ids].map do |i| Answer.find(i) end
+  @question = Question.find(params[:question_id])
+  @progress = Progress.find(params[:progress_id])
+  @correct = @progress.check(params[:answer_ids])
 
-  @answer_ids = @answers.map do |i| (i.id.to_i) end
-  @answer_ids.sort!
-
-  @question = Question.find(@answers.first.question_id)
-
-  @question_id = @question.id
-
-    correct_answers = @question.answers.where(:is_correct => true)
-    @correct_answers_ids = correct_answers.map do |i| i.id end
-      @correct_answers_ids.sort!
-
-    @progress = Progress.find(params[:progress_id])
-
-    if @correct_answers_ids == @answer_ids
-      @progress.num_right += 1
-      @correct = true
-    else
-      @progress.num_wrong += 1
-    end
-      binding.pry
+ if @progress.total && @progress.passing
+    @interview.passing += 1
+    @interview.save
+  elsif @progress.total
+    @interview.failing +=1
+    @interview.save
+  end
 
 end
 
