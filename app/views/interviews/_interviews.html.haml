@@ -3,34 +3,39 @@
 
 %h2 Interviews
 #form
-%table
-  %tr
-    %th Name
-    %th Cost
-    %th Threshold %
-    %th # Passing
-    %th # Fails
-    %th Owner
-    %th Analytics
-    %th Purchase
-    %th Tags
-    - @interviews.each do |interview|
-      %tr
-        %td= link_to(interview.name, interview_path(interview))
-        %td= number_to_currency(link_to(interview.cost, cost_interviews_path(interview.cost), :remote => true))
-        %td= number_to_percentage(interview.threshold)
-        %td= interview.passing
-        %td= interview.failing
-        %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
-        %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert analyticschart')
-        %td
-          %script{:src => "https://checkout.stripe.com/v2/checkout.js",
-                  :class => "stripe-button",
-                  :'data-label' => interview.name,
-                  :'data-amount' => interview.cost * 100,
-                  :'data-key' => Rails.configuration.stripe[:publishable_key]}
+- if @auth.present?
+  %table
+    %tr
+      %th Name
+      %th Cost
+      %th Threshold %
+      %th # Passing
+      %th # Fails
+      %th Owner
+      %th Analytics
+      %th Purchase
+      %th Tags
+      - @interviews.each do |interview|
+        %tr
+          - if interview.cost == 0.00
+            %td= link_to(interview.name, interview_path(interview))
+          - else
+            %td= interview.name
+
+          %td= number_to_currency(link_to(interview.cost, cost_interviews_path(interview.cost), :remote => true))
+          %td= number_to_percentage(interview.threshold)
+          %td= interview.passing
+          %td= interview.failing
+          %td= link_to(interview.user.name, filter_interviews_path(interview.user), :remote => true)
+          %td= link_to('Analytics', analytics_interview_path(interview), :remote => true, :class => 'button tiny alert analyticschart')
+          %td
+            %script{:src => "https://checkout.stripe.com/v2/checkout.js",
+                    :class => "stripe-button",
+                    :'data-label' => interview.name,
+                    :'data-amount' => interview.cost * 100,
+                    :'data-key' => Rails.configuration.stripe[:publishable_key]}
             = form_tag purchase_interview_path(interview), :remote => true do end
-        %td= interview.tags.map(&:name).join(', ')
+          %td= interview.tags.map(&:name).join(', ')
 
 
 
