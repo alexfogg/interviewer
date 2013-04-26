@@ -1,6 +1,6 @@
 $('#interviewcreate').hide()
 $('#title').empty().append('<h2><%= @interview.name %></h2>')
-$('#add_question').append('<%=link_to('Add Question', new_questions_path(@interview), :remote => true, :class => 'button tiny') %>')
+$('#add_question').append('<%=link_to('Add Question', new_questions_path(@interview), :remote => true, :class => 'button tiny add_question') %>')
 //<% @interview.id %>
 
 

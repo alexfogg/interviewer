@@ -1,8 +1,3 @@
- $(function(){
-  show_chart();
-  // $('.analyticschart').click(show_chart2);
-});
-
 function show_chart()
 {
   $.ajax({
@@ -13,12 +8,13 @@ function show_chart()
 }
 
 
-function show_chart2()
+function show_chart2(id)
 {
+
   $.ajax({
       dataType: 'json',
       type: "get",
-      url: "/interviewchart/"
+      url: "/interviewchart/?id=" + id
   }).done(process_activity2);
 
 }

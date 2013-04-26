@@ -1,3 +1,37 @@
+
+// #map_canvas {
+//   width: 300px;
+//   height: 300px;
+// }
+
+// #chart
+// {
+//   height: 400px;
+// }
+
+// .hide{
+//   display: none;
+// }
+
+
+// #interviewchart
+// {
+//   height: 400px;
+// }
+
+// .submitAnswer{
+//   height: 25px;
+//   width: 65px;
+//   padding: 5px;
+//   border: 2px solid blue;
+//   background-color: pink;
+//   margin: 5px;
+// }
+
+// .resp{
+//   float: left;
+// }
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 
 #map_canvas {
@@ -22,19 +56,21 @@
   height: 400px;
 }
 
-.submitAnswer{
-  height: 25px;
-  width: 65px;
-  padding: 5px;
-  border: 2px solid blue;
-  background-color: pink;
-  margin: 5px;
-}
+// .submitAnswer{
+//   height: 25px;
+//   width: 65px;
+//   padding: 5px;
+//   border: 2px solid blue;
+//   background-color: pink;
+//   margin: 5px;
+// }
 
-body, .panel
+body, .panel, td
 {
-  background: #c9fceb;
-  font-family: 'Open Sans', sans-serif;
+  background: #c1ffea;
+  font-family: "soleil",sans-serif;
+  font-style: normal;
+  font-weight: 300;
   font-size: 12px;
   line-height: 16px;
   border: 0px;
@@ -47,10 +83,10 @@ body, .panel
   border: 0px;
 }
 
- .stripe-button-el span
+ .stripe-button-el span, .stripe-button, .active
 {
   font-size: 10px !important;
-  background: black !important;
+  background: #13ad79 !important;
   border: 0px !important;
   border-radius: 0px !important;
   height: 20px !important;
@@ -67,6 +103,20 @@ table, ol table
     padding: 0px;
   margin: 0px;
   text-align: left;
+  padding: 5px;
+
+}
+
+#centertext table
+{
+  background: transparent !important;
+  border: 0px;
+  color: #fff;
+    padding: 0px;
+  margin: 0px;
+  text-align: left;
+  padding: 5px;
+
 }
 
 thead, th
@@ -84,7 +134,9 @@ tr
 h3, h4
 {
   background: #13ad79;
-  font-family: helvetica;
+  font-family: "sƒoleil",sans-serif;
+  font-style: normal;
+  font-weight: 300;
   color: #fff;
   padding: 8px;
   border-bottom: 3px solid white;
@@ -124,12 +176,89 @@ height: 30px;
 .stats
 {float:left;
 padding: 10px;
-background: #eee;
+background: #e3fcf3;
 border-radius: 10px;
 margin: 10px;}
 
-.test_btn
+.test_btn, .button, .tiny, .success
 {
-  background: white;
+  background: #f8d9f9;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.submitAnswer
+{
+  background: #f4a4b8;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+
+.ladies
+{
+  font-family: "soleil",sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.footladies
+{
+  text-align: center;
+}
+
+#email, #password, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview
+{
+  width: 500px;
+  background: transparent;
+  border: 0px;
+  border-bottom: 1px solid;
+    -moz-box-shadow:    0px 0px 0px 0px #ccc;
+  -webkit-box-shadow: 0px 0px 0px 0px #ccc;
+  box-shadow:         0px 0px 0px 0px #ccc;
+  font-weight:700;
+  font-size: 30px;
+}
+
+.q
+{
+  border-bottom: 2px solid green;
+  width: 500px;
+  font-weight:700;
+  font-size: 20px;
+  background: #e1f4f1;
+  margin-top: 5px;
+  padding: 8px;
+}
+
+.resp
+{
+  font-style: italic;
+  color: #bbb;
+}
+
+.check
+{
+  float: left;
+  margin: 2px;
+  margin-top: 3px;
+  padding-top: 5px;
+}
+
+h2
+{
+  color: white;
+}
+
+#header
+{
   color: black;
 }

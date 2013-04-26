@@ -1,17 +1,17 @@
-<% if @question.answers.count > 4 && @question.answers.where(:is_correct => true).present? %>
+<% if @question.answers.count > 3 && @question.answers.where(:is_correct => true).present? %>
   $('#quest_title').append('<li><%= @answer.response %> , <%= @answer.is_correct %> </li>').fadeIn("slow")
   $('#questions').empty()
   $('#add_answer').empty()
   $('#add_question').show()
 <% else %>
-$('#add_answer').empty().append('<%=link_to('Add Answer', new_answers_path(@question), :remote => true, :class => 'button tiny')  %>');
+$('#add_answer').empty().append('<%=link_to('Add Answer', new_answers_path(@question), :remote => true, :class => 'button tiny answer')  %>');
   $('#questions').empty()
  $('#add_question').hide()
-  $('#quest_title').append('<li><%= @answer.response %> , <%= @answer.is_correct %> </li>')
+  $('#quest_title').append('<li><%= @answer.     response %> , <%= @answer.is_correct %> </li>')
 <% end %>
 
 
-<% if @interview.questions.count == 4 && @question.answers.count > 4 && @question.answers.where(:is_correct => true).present? %>
+<% if @interview.questions.count == 4 && @question.answers.count > 3 && @question.answers.where(:is_correct => true).present? %>
 
    document.location.href = '/'
 <% end %>

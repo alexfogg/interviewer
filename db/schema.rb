@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407040458) do
+ActiveRecord::Schema.define(:version => 20130408160500) do
 
   create_table "answers", :force => true do |t|
     t.text     "response"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(:version => 20130407040458) do
     t.string   "name"
     t.decimal  "cost"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.decimal  "threshold"
+    t.integer  "passing",    :default => 0
+    t.integer  "failing",    :default => 0
   end
 
   create_table "interviews_tags", :id => false, :force => true do |t|
@@ -36,13 +38,8 @@ ActiveRecord::Schema.define(:version => 20130407040458) do
   end
 
   create_table "progresses", :force => true do |t|
-<<<<<<< HEAD
-    t.integer  "num_right"
-    t.integer  "num_wrong"
-=======
     t.integer  "num_right",    :default => 0
     t.integer  "num_wrong",    :default => 0
->>>>>>> 4ddefee83a807d241a06c93ff26a9fb7162343dd
     t.float    "percentage"
     t.integer  "interview_id"
     t.integer  "user_id"

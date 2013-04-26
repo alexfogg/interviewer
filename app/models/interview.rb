@@ -9,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  threshold  :decimal(, )
+#  passing    :integer          default(0)
+#  failing    :integer          default(0)
 #
 
 class Interview < ActiveRecord::Base
@@ -23,7 +25,7 @@ class Interview < ActiveRecord::Base
     r = self.progresses.map(&:num_right).inject(:+)
     w = self.progresses.map(&:num_wrong).inject(:+)
     t = r.to_f + w.to_f
-    (r.to_f / t) * 100
+    (r.to_f / t.to_f) * 100
   end
 
 end

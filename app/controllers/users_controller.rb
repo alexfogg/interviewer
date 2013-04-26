@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :only_authenticated_users, only: [:show]
 
   def show
     @auth
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   def userchart
     u = @auth.progresses.map do |progress|
       {'num_right' => progress.num_right, 'date' => progress.created_at}
-    end 
+    end
     render :json => u
   end
 end
